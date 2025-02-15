@@ -21,10 +21,11 @@ while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 ],
             ]
         ]);
-        $textexpire = "با سلام خدمت شما کاربر گرامی 
-سرویس تست شما با نام کاربری $resultt به پایان رسیده است
-امیدواریم تجربه‌ی خوبی از آسودگی و سرعت سرویستون داشته باشین. در صورتی که از سرویس‌ تست خودتون راضی بودین، میتونید سرویس اختصاصی خودتون رو تهیه کنید و از داشتن اینترنت آزاد با نهایت کیفیت لذت ببرید😉🔥
-🛍 برای تهیه سرویس با کیفیت می توانید از دکمه زیر استفاده نمایید";
+        $textexpire = "Hello dear user,  
+Your test service with the username $resultt has expired.  
+We hope you had a great experience with the ease and speed of our service. If you were satisfied with your test service, you can purchase your own dedicated service and enjoy unrestricted internet with the highest quality 😉🔥  
+
+🛍 To purchase a high-quality service, you can use the button below.";
         sendmessage($result['id_user'], $textexpire, $Response, 'HTML');
     }
 }
