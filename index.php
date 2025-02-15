@@ -766,9 +766,9 @@ if (preg_match('/subscriptionurl_(\w+)/', $datain, $dataget)) {
             ]
         ]
     ]);
-    $textextend = "🧾 Your renewal invoice has been created for the username {$nameloc['username']}.";
+    $textextend = "🧾 Your renewal invoice has been created for the username {$nameloc['username']}.
             
-$textextend = "🛍 Product Name: {$product['name_product']}
+🛍 Product Name: {$product['name_product']}
 Renewal Amount: {$product['price_product']}
 Renewal Duration: {$product['Service_time']} days
 Renewal Volume: {$product['Volume_constraint']} GB
@@ -1239,7 +1239,7 @@ if ($user['step'] == "createusertest" || preg_match('/locationtests_(.*)/', $dat
             ]
         ]
     ]);
-    $textcreatuser = "✅ The service has been successfully created";
+    $textcreatuser = "✅ The service has been successfully created
 
 👤 Service Username: <code>$username_ac</code>
 🌿 Service Name: Test
@@ -1833,13 +1833,13 @@ if ($text == $datatextbot['text_Add_Balance'] || $text == "/wallet") {
     if ($datain == "cart_to_offline") {
         $PaySetting = select("PaySetting", "ValuePay", "NamePay", "CartDescription", "select")['ValuePay'];
         $Processing_value = number_format($user['Processing_value']);
-        $textcart = "To manually top up your balance, transfer the amount of $Processing_value Toman to the account number below 👇🏻";
+        $textcart = "To manually top up your balance, transfer the amount of $Processing_value Toman to the account number below 👇🏻
     
     ==================== 
     $PaySetting
     ====================
     
-$textcart = "🌅 Please send your receipt image at this stage. 
+🌅 Please send your receipt image at this stage. 
 
 ⚠️ The maximum deposit amount is 10 million Tomans.  
 ⚠️ Withdrawal from the wallet is not possible.  
