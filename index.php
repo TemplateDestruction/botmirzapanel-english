@@ -4258,7 +4258,7 @@ if ($text == "🕚 Cron job settings") {
     sendmessage($from_id, $textbotlang['users']['selectoption'], $keyboardcronjob, 'HTML');
 }
 if($text == "Cron test activation"){
-    sendmessage($from_id, "✅ کرون جاب فعال گردید این کرون هر 15 دقیقه اجرا می شود", null, 'HTML');
+sendmessage($from_id, "✅ Cron job has been activated. This cron will run every 15 minutes.", null, 'HTML');
     $phpFilePath = "https://$domainhosts/cron/configtest.php";
     $cronCommand = "*/15 * * * * curl $phpFilePath";
     $existingCronCommands = shell_exec('crontab -l');
@@ -4267,8 +4267,8 @@ if($text == "Cron test activation"){
         shell_exec($command);
     }
 }
-if($text == "غیر فعال شدن کرون تست"){
-    sendmessage($from_id, "کرون جاب غیرفعال گردید", null, 'HTML');
+if($text == "Disable Cron Test") {
+    sendmessage($from_id, "Cron job has been deactivated", null, 'HTML');
     $currentCronJobs = shell_exec("crontab -l");
     $jobToRemove = "*/15 * * * * curl https://$domainhosts/cron/configtest.php";
     $newCronJobs = preg_replace('/'.preg_quote($jobToRemove, '/').'/', '', $currentCronJobs);
@@ -4276,8 +4276,8 @@ if($text == "غیر فعال شدن کرون تست"){
     shell_exec('crontab /tmp/crontab.txt');
     unlink('/tmp/crontab.txt');
 }
-if($text == "فعال شدن کرون حجم"){
-    sendmessage($from_id, "✅ کرون جاب فعال گردید این کرون هر 1 دقیقه اجرا می شود", null, 'HTML');
+if($text == "Cron job activation for volume") {
+    sendmessage($from_id, "✅ Cron job has been activated. This cron runs every 1 minute.", null, 'HTML');
     $phpFilePath = "https://$domainhosts/cron/cronvolume.php";
     $cronCommand = "*/1 * * * * curl $phpFilePath";
     $existingCronCommands = shell_exec('crontab -l');
@@ -4286,8 +4286,8 @@ if($text == "فعال شدن کرون حجم"){
         shell_exec($command);
     }
 }
-if($text == "غیر فعال شدن کرون حجم"){
-    sendmessage($from_id, "کرون جاب غیرفعال گردید", null, 'HTML');
+if($text == "Cron job deactivation for volume") {
+    sendmessage($from_id, "The cron job has been deactivated.", null, 'HTML');
     $currentCronJobs = shell_exec("crontab -l");
     $jobToRemove = "*/1 * * * * curl https://$domainhosts/cron/cronvolume.php";
     $newCronJobs = preg_replace('/'.preg_quote($jobToRemove, '/').'/', '', $currentCronJobs);
@@ -4295,8 +4295,8 @@ if($text == "غیر فعال شدن کرون حجم"){
     shell_exec('crontab /tmp/crontab.txt');
     unlink('/tmp/crontab.txt');
 }
-if($text == "فعال شدن کرون زمان"){
-    sendmessage($from_id, "✅ کرون جاب فعال گردید این کرون هر 1 دقیقه اجرا می شود", null, 'HTML');
+if($text == "Cron job activation for time") {
+    sendmessage($from_id, "✅ Cron job has been activated. This cron will run every 1 minute.", null, 'HTML');
     $phpFilePath = "https://$domainhosts/cron/cronday.php";
     $cronCommand = "*/1 * * * * curl $phpFilePath";
     $existingCronCommands = shell_exec('crontab -l');
@@ -4305,8 +4305,8 @@ if($text == "فعال شدن کرون زمان"){
         shell_exec($command);
     }
 }
-if($text == "غیر فعال شدن کرون زمان"){
-    sendmessage($from_id, "کرون جاب غیرفعال گردید", null, 'HTML');
+if($text == "Deactivation of cron job for time") {
+    sendmessage($from_id, "Cron job has been deactivated", null, 'HTML');
     $currentCronJobs = shell_exec("crontab -l");
     $jobToRemove = "*/1 * * * * curl https://$domainhosts/cron/cronday.php";
     $newCronJobs = preg_replace('/'.preg_quote($jobToRemove, '/').'/', '', $currentCronJobs);
@@ -4314,8 +4314,8 @@ if($text == "غیر فعال شدن کرون زمان"){
     shell_exec('crontab /tmp/crontab.txt');
     unlink('/tmp/crontab.txt');
 }
-if($text == "فعال شدن کرون حذف"){
-    sendmessage($from_id, "✅ کرون جاب فعال گردید این کرون هر 1 دقیقه اجرا می شود", null, 'HTML');
+if($text == "Activation of cron job for deletion") {
+    sendmessage($from_id, "✅ Cron job has been activated, it will run every 1 minute", null, 'HTML');
     $phpFilePath = "https://$domainhosts/cron/removeexpire.php";
     $cronCommand = "*/1 * * * * curl $phpFilePath";
     $existingCronCommands = shell_exec('crontab -l');
@@ -4324,8 +4324,8 @@ if($text == "فعال شدن کرون حذف"){
         shell_exec($command);
     }
 }
-if($text == "غیر فعال شدن کرون حذف"){
-    sendmessage($from_id, "کرون جاب غیرفعال گردید", null, 'HTML');
+if($text == "Deactivation of cron job for deletion") {
+    sendmessage($from_id, "Cron job has been deactivated", null, 'HTML');
     $currentCronJobs = shell_exec("crontab -l");
     $jobToRemove = "*/1 * * * * curl https://$domainhosts/cron/removeexpire.php";
     $newCronJobs = preg_replace('/'.preg_quote($jobToRemove, '/').'/', '', $currentCronJobs);
@@ -4333,8 +4333,8 @@ if($text == "غیر فعال شدن کرون حذف"){
     shell_exec('crontab /tmp/crontab.txt');
     unlink('/tmp/crontab.txt');
 }
-if ($text == "👁‍🗨 جستجو کاربر") {
-    sendmessage($from_id, "📌 آیدی عددی کاربر را ارسال نمایید", $backadmin, 'HTML');
+if ($text == "👁‍🗨 Search User") {
+    sendmessage($from_id, "📌 Please send the user's numerical ID", $backadmin, 'HTML');
     step('show_infos', $from_id);
 } elseif ($user['step'] == "show_infos") {
     if (!in_array($text, $users_ids)) {
@@ -4365,62 +4365,62 @@ if ($text == "👁‍🗨 جستجو کاربر") {
             [['text' => $textbotlang['Admin']['ManageUser']['addbalanceuser'], 'callback_data' => "addbalanceuser_" . $text], ['text' => $textbotlang['Admin']['ManageUser']['lowbalanceuser'], 'callback_data' => "lowbalanceuser_" . $text],],
             [['text' => $textbotlang['Admin']['ManageUser']['banuserlist'], 'callback_data' => "banuserlist_" . $text], ['text' => $textbotlang['Admin']['ManageUser']['unbanuserlist'], 'callback_data' => "unbanuserr_" . $text]],
             [['text' => $textbotlang['Admin']['ManageUser']['confirmnumber'], 'callback_data' => "confirmnumber_" . $text]],
-            [['text' => "➕ محدودیت ساخت اکانت تست", 'callback_data' => "limitusertest_" . $text]],
-            [['text' => "احراز هویت ", 'callback_data' => "verify_" . $text],['text' => "حذف احراز هویت ", 'callback_data' => "verifyun_" . $text]],
+            [['text' => "➕ Account Creation Limit", 'callback_data' => "limitusertest_" . $text]],
+            [['text' => "Verification", 'callback_data' => "verify_" . $text], ['text' => "Delete Verification", 'callback_data' => "verifyun_" . $text]],
         ]
     ];
     $keyboardmanage = json_encode($keyboardmanage);
     $user['Balance'] = number_format($user['Balance']);
     $lastmessage = jdate('Y/m/d H:i:s',$user['last_message_time']);
-    $textinfouser = "👀 اطلاعات کاربر:
+    $textinfouser = "👀 User Information:
 
-⭕️ وضعیت کاربر : {$user['User_Status']}
-⭕️ نام کاربری کاربر : @{$user['username']}
-⭕️ آیدی عددی کاربر :  <a href = \"tg://user?id=$text\">$text</a>
-⭕️ آخرین زمان  استفاده کاربر از ربات : $lastmessage
-⭕️ محدودیت اکانت تست :  {$user['limit_usertest']} 
-⭕️ وضعیت تایید قانون : $roll_Status
-⭕️ شماره موبایل : <code>{$user['number']}</code>
-⭕️ موجودی کاربر : {$user['Balance']}
-⭕️ تعداد خرید کل کاربر : $dayListSell
-⭕️ مبلغ کل پرداختی  :  $balanceall
-⭕️ جمع کل خرید : $subbuyuser
-⭕️ تعداد زیرمجموعه کاربر : {$user['affiliatescount']}
-⭕  معرف کاربر : {$user['affiliates']}
-⭕  وضعیت احراز کاربرر : {$user['verify']}
+⭕️ User Status: {$user['User_Status']}
+⭕️ Username: @{$user['username']}
+⭕️ User Numeric ID: <a href = \"tg://user?id=$text\">$text</a>
+⭕️ Last time the user used the bot: $lastmessage
+⭕️ Test Account Limit: {$user['limit_usertest']}
+⭕️ Verification Status: $roll_Status
+⭕️ Mobile Number: <code>{$user['number']}</code>
+⭕️ User Balance: {$user['Balance']}
+⭕️ Total Purchases Made by User: $dayListSell
+⭕️ Total Amount Paid: $balanceall
+⭕️ Total Purchase Amount: $subbuyuser
+⭕️ User's Affiliates Count: {$user['affiliatescount']}
+⭕️ Referrer: {$user['affiliates']}
+⭕️ User Verification Status: {$user['verify']}
 ";
     sendmessage($from_id, $textinfouser, $keyboardmanage, 'HTML');
     sendmessage($from_id, $textbotlang['users']['selectoption'], $keyboardadmin, 'HTML');
     step('home', $from_id);
 }
-if($text == "زمان حذف اکانت"){
-    sendmessage($from_id, "زمان خود را برای حذف اکانت های اکسپایر شده ارسال کنید", $backadmin, 'HTML');
+if($text == "Account Deletion Time"){
+    sendmessage($from_id, "Send the time for deleting expired accounts", $backadmin, 'HTML');
     step("gettimeremove",$from_id);
 }elseif($user['step'] == "gettimeremove"){
     if (!ctype_digit($text)) {
-        sendmessage($from_id, "زمان ناعمتبر است", $backadmin, 'HTML');
+        sendmessage($from_id, "The time is invalid", $backadmin, 'HTML');
         return;
     }
-    sendmessage($from_id, "زمان با موفقیت تنظیم شد", $keyboardcronjob, 'HTML');
+    sendmessage($from_id, "The time has been successfully set", $keyboardcronjob, 'HTML');
     step("home",$from_id);
     update("setting","removedayc",$text,null,null);
 }
-if ($text == "⚙️ تنظیمات سرویس") {
-    $textsetservice = "📌 برای تنظیم سرویس یک کانفیگ در پنل خود ساخته و  سرویس هایی که میخواهید فعال باشند. را داخل پنل فعال کرده و نام کاربری کانفیگ را ارسال نمایید";
+if ($text == "⚙️ Service Settings") {
+    $textsetservice = "📌 To configure the service, create a config in your panel, activate the services you want inside the panel, and send the username of the config.";
     sendmessage($from_id, $textsetservice, $backadmin, 'HTML');
     step('getservceid',$from_id);
 } elseif ($user['step'] == "getservceid") {
     $userdata = getuserm($text,$user['Processing_value']);
     if(isset($userdata['detail']) and $userdata['detail'] == "User not found"){
-        sendmessage($from_id,"کاربر در پنل وجود ندارد", null, 'HTML');
+        sendmessage($from_id, "User does not exist in the panel", null, 'HTML');
         return;
     }
     update("marzban_panel","proxies",json_encode($userdata['service_ids']),"name_panel",$user['Processing_value']);
     step("home",$from_id);
-    sendmessage($from_id,"✅ اطلاعات با موفقیت تنظیم گردید", $optionMarzneshin, 'HTML');
+    sendmessage($from_id, "✅ Information has been successfully set", $optionMarzneshin, 'HTML');
 }
-elseif($text == "✏️ ویرایش آموزش"){
-    sendmessage($from_id,"📌 یک آموزش را انتخاب کنید.", $json_list_help, 'HTML');
+elseif($text == "✏️ Edit Tutorial"){
+    sendmessage($from_id,"📌 Select a tutorial.", $json_list_help, 'HTML');
     step("getnameforedite",$from_id);
 }elseif($user['step'] == "getnameforedite"){
     sendmessage($from_id, $textbotlang['users']['selectoption'], $helpedit, 'HTML');
@@ -4428,27 +4428,27 @@ elseif($text == "✏️ ویرایش آموزش"){
     step("home",$from_id);
 
 }
-elseif($text == "ویرایش نام") {
-    sendmessage($from_id, "نام جدید را ارسال کنید", $backadmin, 'HTML');
+elseif($text == "Edit Name") {
+    sendmessage($from_id, "Please send the new name", $backadmin, 'HTML');
     step('changenamehelp', $from_id);
 }elseif($user['step'] == "changenamehelp") {
     if(strlen($text) >= 150){
-        sendmessage($from_id, "❌ نام آموزش باید کمتر از 150 کاراکتر باشد", null, 'HTML');
+        sendmessage($from_id, "❌ The course name must be less than 150 characters", null, 'HTML');
         return;
     }
     update("help","name_os",$text,"name_os",$user['Processing_value']);
-    sendmessage($from_id, "✅ نام آموزش بروزرسانی شد", $json_list_helpkey, 'HTML');
+    sendmessage($from_id, "✅ The course name has been updated", $json_list_helpkey, 'HTML');
     step('home', $from_id);
-}elseif($text == "ویرایش توضیحات") {
-    sendmessage($from_id, "توضیحات جدید را ارسال کنید", $backadmin, 'HTML');
+}elseif($text == "Edit Description") {
+    sendmessage($from_id, "Please send the new description", $backadmin, 'HTML');
     step('changedeshelp', $from_id);
 }elseif($user['step'] == "changedeshelp") {
     update("help","Description_os",$text,"name_os",$user['Processing_value']);
-    sendmessage($from_id, "✅ توضیحات  آموزش بروزرسانی شد", $helpedit, 'HTML');
+    sendmessage($from_id, "✅ The tutorial description has been updated", $helpedit, 'HTML');
     step('home', $from_id);
 }
-elseif($text == "ویرایش رسانه") {
-    sendmessage($from_id, "تصویر یا فیلم جدید را ارسال کنید", $backadmin, 'HTML');
+elseif($text == "Edit Media") {
+    sendmessage($from_id, "Please send the new image or video", $backadmin, 'HTML');
     step('changemedia', $from_id);
 }elseif($user['step'] == "changemedia") {
     if ($photo) {
@@ -4458,17 +4458,17 @@ elseif($text == "ویرایش رسانه") {
         if(isset($videoid))update("help","Media_os",$videoid, "name_os",$user['Processing_value']);
         update("help","type_Media_os","video", "name_os",$user['Processing_value']);
     }
-    sendmessage($from_id, "✅ توضیحات  آموزش بروزرسانی شد", $helpedit, 'HTML');
+    sendmessage($from_id, "✅ The tutorial description has been updated", $helpedit, 'HTML');
     step('home', $from_id);
-}elseif($text == "⚙️ تنظیم پروتکل و اینباند"){
-    $textsetprotocol = "📌 برای تنظیم اینباند  و پروتکل باید یک کانفیگ در پنل خود ساخته و  پروتکل و اینباند هایی که میخواهید فعال باشند. را داخل پنل فعال کرده و نام کاربری کانفیگ را ارسال نمایید";
+}elseif($text == "⚙️ Set Protocol and Inbound"){
+    $textsetprotocol = "📌 To set the inbound and protocol, you need to create a config in your panel and activate the protocols and inbounds you want in the panel, then send the config username.";
     sendmessage($from_id, $textsetprotocol, $backadmin, 'HTML');
     step("setinboundandprotocol",$from_id);
 }elseif($user['step'] == "setinboundandprotocol"){
     if (filter_var($text, FILTER_VALIDATE_URL)) {
         $data = json_decode(outputlunk("$text/info"),true);
         if(!isset($data['proxies'])){
-            sendmessage($from_id, "❌ لینک ساب نامعتبر است", null, 'html');
+            sendmessage($from_id, "❌ The sub-link is invalid", null, 'html');
             return;
         }
         $DataUserOut = $data;
@@ -4495,18 +4495,18 @@ elseif($text == "ویرایش رسانه") {
     }
     update("marzban_panel","inbounds",json_encode($DataUserOut['inbounds']),"name_panel",$user['Processing_value']);
     update("marzban_panel","proxies",json_encode($DataUserOut['proxies']),"name_panel",$user['Processing_value']);
-    sendmessage($from_id, "✅ اینباند و پروتکل های شما با موفقیت تنظیم گردیدند.", $optionMarzban, 'HTML');
+    sendmessage($from_id, "✅ Your inbound and protocols have been successfully set.", $optionMarzban, 'HTML');
     step("home",$from_id);
-}elseif($text == "⚙️ وضعیت قابلیت ها") {
-    if($setting['Bot_Status'] == "✅  ربات روشن است") {
+}elseif($text == "⚙️ Feature Status") {
+    if($setting['Bot_Status'] == "✅ Bot is ON") {
         update("setting","Bot_Status","1");
-    }elseif($setting['Bot_Status'] == "❌ ربات خاموش است") {
+    }elseif($setting['Bot_Status'] == "❌ Bot is OFF") {
         update("setting","Bot_Status","0");
     }
 
-    if($setting['roll_Status'] == "✅ تایید قانون روشن است") {
+    if($setting['roll_Status'] == "✅ Rule approval is ON") {
         update("setting","roll_Status","1");
-    }elseif($setting['roll_Status'] == "❌ تایید قوانین خاموش است") {
+    }elseif($setting['roll_Status'] == "❌ Rule approval is OFF") {
         update("setting","roll_Status","0");
     }
 
@@ -4516,21 +4516,21 @@ elseif($text == "ویرایش رسانه") {
         update("setting","NotUser","0");
     }
 
-    if($setting['help_Status'] == "✅ آموزش فعال است") {
+    if($setting['help_Status'] == "✅ Help is active") {
         update("setting","help_Status","1");
-    }elseif($setting['help_Status'] == "❌ آموزش غیرفعال است") {
+    }elseif($setting['help_Status'] == "❌ Help is inactive") {
         update("setting","help_Status","0");
     }
 
-    if($setting['get_number'] == "✅ تایید شماره موبایل روشن است") {
+    if($setting['get_number'] == "✅ Mobile number verification is enabled") {
         update("setting","get_number","1");
-    }elseif($setting['get_number'] == "❌ احرازهویت شماره تماس غیرفعال است") {
+    }elseif($setting['get_number'] == "❌ Mobile number verification is disabled") {
         update("setting","get_number","0");
     }
 
-    if($setting['iran_number'] == "✅ احرازشماره ایرانی روشن است") {
+    if($setting['iran_number'] == "✅ Iranian phone number verification is enabled") {
         update("setting","iran_number","1");
-    }elseif($setting['iran_number'] == "❌ بررسی شماره ایرانی غیرفعال است") {
+    }elseif($setting['iran_number'] == "❌ Iranian phone number verification is disabled") {
         update("setting","iran_number","0");
     }
     $setting = select("setting", "*");
@@ -4577,25 +4577,25 @@ elseif($text == "ویرایش رسانه") {
                 ['text' => $textbotlang['Admin']['Status']['stautsbot'], 'callback_data' => "statusbot"],
             ],[
                 ['text' => $roll_Status, 'callback_data' => "editstsuts-roll_Status-{$setting['roll_Status']}"],
-                ['text' => "♨️ بخش قوانین", 'callback_data' => "roll_Status"],
+                ['text' => "♨️ Rules Section", 'callback_data' => "roll_Status"],
             ],[
                 ['text' => $NotUser_Status, 'callback_data' => "editstsuts-NotUser-{$setting['NotUser']}"],
-                ['text' => "👤 دکمه نام کاربری", 'callback_data' => "NotUser"],
+                ['text' => "👤 Username Button", 'callback_data' => "NotUser"],
             ],[
                 ['text' => $help_Status, 'callback_data' => "editstsuts-help_Status-{$setting['help_Status']}"],
-                ['text' => "💡 وضعیت بخش آموزش", 'callback_data' => "help_Status"],
+                ['text' => "💡 Help Section Status", 'callback_data' => "help_Status"],
             ],[
                 ['text' => $get_number_Status, 'callback_data' => "editstsuts-get_number-{$setting['get_number']}"],
-                ['text' => "احراز هویت شماره", 'callback_data' => "get_number"],
+                ['text' => "Phone Number Verification", 'callback_data' => "get_number"],
             ],[
                 ['text' => $get_number_iran, 'callback_data' => "editstsuts-iran_number-{$setting['iran_number']}"],
-                ['text' => "تایید شماره ایرانی 🇮🇷", 'callback_data' => "iran_number"],
+                ['text' => "Verify Iranian Number 🇮🇷", 'callback_data' => "iran_number"],
             ],[
                 ['text' => $statusv_verify, 'callback_data' => "editstsuts-verify-{$setting['status_verify']}"],
-                ['text' => "👤 احراز هویت", 'callback_data' => "status_verify"],
+                ['text' => "👤 Verification", 'callback_data' => "status_verify"],
             ],[
                 ['text' => $statusv_category, 'callback_data' => "editstsuts-category-{$setting['statuscategory']}"],
-                ['text' => "🕹 دسته بندی", 'callback_data' => "statuscategory"],
+                ['text' => "🕹 Category", 'callback_data' => "statuscategory"],
             ]
         ]
     ]);
@@ -4705,25 +4705,25 @@ elseif(preg_match('/^editstsuts-(.*)-(.*)/', $datain, $dataget)) {
                 ['text' => $textbotlang['Admin']['Status']['stautsbot'], 'callback_data' => "statusbot"],
             ],[
                 ['text' => $roll_Status, 'callback_data' => "editstsuts-roll_Status-{$setting['roll_Status']}"],
-                ['text' => "♨️ بخش قوانین", 'callback_data' => "roll_Status"],
+                ['text' => "♨️ Rules Section", 'callback_data' => "roll_Status"],
             ],[
                 ['text' => $NotUser_Status, 'callback_data' => "editstsuts-NotUser-{$setting['NotUser']}"],
-                ['text' => "👤 دکمه نام کاربری", 'callback_data' => "NotUser"],
+                ['text' => "👤 Username Button", 'callback_data' => "NotUser"],
             ],[
                 ['text' => $help_Status, 'callback_data' => "editstsuts-help_Status-{$setting['help_Status']}"],
-                ['text' => "💡 وضعیت بخش آموزش", 'callback_data' => "help_Status"],
+                ['text' => "💡 Training Section Status", 'callback_data' => "help_Status"],
             ],[
                 ['text' => $get_number_Status, 'callback_data' => "editstsuts-get_number-{$setting['get_number']}"],
-                ['text' => "احراز هویت شماره", 'callback_data' => "get_number"],
+                ['text' => "Phone Number Verification", 'callback_data' => "get_number"],
             ],[
                 ['text' => $get_number_iran, 'callback_data' => "editstsuts-iran_number-{$setting['iran_number']}"],
-                ['text' => "تایید شماره ایرانی 🇮🇷", 'callback_data' => "iran_number"],
+                ['text' => "Iranian Number Verification 🇮🇷", 'callback_data' => "iran_number"],
             ],[
                 ['text' => $statusv_verify, 'callback_data' => "editstsuts-verify-{$setting['status_verify']}"],
-                ['text' => "👤 احراز هویت", 'callback_data' => "status_verify"],
+                ['text' => "👤 Verification", 'callback_data' => "status_verify"],
             ],[
                 ['text' => $statusv_category, 'callback_data' => "editstsuts-category-{$setting['statuscategory']}"],
-                ['text' => "🕹 دسته بندی", 'callback_data' => "statuscategory"],
+                ['text' => "🕹 Category", 'callback_data' => "statuscategory"],
             ]
         ]
     ]);
@@ -4732,36 +4732,36 @@ elseif(preg_match('/^editstsuts-(.*)-(.*)/', $datain, $dataget)) {
     $iduser = $dataget[1];
     $userunverify = select("user", "*", "id", $iduser, "select");
     if ($userunverify['verify'] == "1") {
-        sendmessage($from_id, "کاربر از قبل احراز شده است", $backadmin, 'HTML');
+        sendmessage($from_id, "The user is already verified", $backadmin, 'HTML');
         return;
     }
     update("user", "verify", "1", "id", $iduser);
-    sendmessage($from_id,"✅ کاربر با موفقیت احراز گردید.", $keyboardadmin, 'HTML');
+    sendmessage($from_id, "✅ The user has been successfully verified.", $keyboardadmin, 'HTML');
     step('home', $from_id);
 }elseif (preg_match('/verifyun_(\w+)/', $datain, $dataget)) {
     $iduser = $dataget[1];
     $userunverify = select("user", "*", "id", $iduser, "select");
     if ($userunblock['verify'] == "0") {
-        sendmessage($from_id, "کاربر از قبل احراز نبوده است", $backadmin, 'HTML');
+        sendmessage($from_id, "The user has not been verified before.", $backadmin, 'HTML');
         return;
     }
     update("user", "verify", "0", "id", $iduser);
-    sendmessage($from_id,"✅ کاربر با موفقیت از احراز خارج گردید.", $keyboardadmin, 'HTML');
+    sendmessage($from_id, "✅ The user has been successfully unverified.", $keyboardadmin, 'HTML');
     step('home', $from_id);
-}elseif($text == "🛒 اضافه کردن دسته بندی"){
-    sendmessage($from_id,"📌 نام دسته بندی را ارسال کنید ", $backadmin, 'HTML');
+}elseif($text == "🛒 Add Category"){
+    sendmessage($from_id,"📌 Please send the category name", $backadmin, 'HTML');
     step("getremarkcategory",$from_id);
 }elseif($user['step'] == "getremarkcategory"){
-    sendmessage($from_id,"✅ دسته بندی با موفقیت اضافه گردید.", $shopkeyboard, 'HTML');
+    sendmessage($from_id,"✅ The category has been successfully added.", $shopkeyboard, 'HTML');
     step("home",$from_id);
     $stmt = $pdo->prepare("INSERT INTO category (remark) VALUES (?)");
     $stmt->bindParam(1, $text);
     $stmt->execute();
-}elseif($text == "❌ حذف دسته بندی"){
-    sendmessage($from_id,"📌 دسته بندی خود را جهت حذف انتخاب کنید",KeyboardCategory(), 'HTML');
+elseif($text == "❌ Delete Category") {
+    sendmessage($from_id,"📌 Please select the category you want to delete", KeyboardCategory(), 'HTML');
     step("removecategory",$from_id);
 }elseif($user['step'] == "removecategory"){
-    sendmessage($from_id,"✅ دسته بندی با موفقیت حذف گردید.", $shopkeyboard, 'HTML');
+    sendmessage($from_id,"✅ The category has been successfully deleted.", $shopkeyboard, 'HTML');
     step("home",$from_id);
     $stmt = $pdo->prepare("DELETE FROM category WHERE remark = :remark ");
     $stmt->bindParam(':remark', $text);
