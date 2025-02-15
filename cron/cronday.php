@@ -25,13 +25,13 @@ while ($line = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $Response = json_encode([
                 'inline_keyboard' => [
                     [
-                        ['text' => "💊 تمدید سرویس", 'callback_data' => 'extend_' . $resultss['username']],
+                        ['text' => "💊 Renew Service", 'callback_data' => 'extend_' . $resultss['username']],
                     ],
                 ]
             ]);
             if ($timeservice <= "167000" && $timeservice > 0) {
-                $text = "با سلام خدمت شما کاربر گرامی 👋
-📌 از مهلت زمانی استفاده از سرویس {$resultss['username']} فقط $day روز باقی مانده است. لطفاً در صورت تمایل برای تمدید این سرویس، از طریق بخش «{$textservice}» اقدام بفرمایین. با تشکر از همراهی شما";
+                $text = "Hello dear user 👋
+📌 Only $day days are left for the service {$resultss['username']}. If you wish to renew this service, please proceed through the \"{$textservice}\" section. Thank you for staying with us!";
                 sendmessage($resultss['id_user'], $text, $Response, 'HTML');
                 if($resultss['Status'] === "end_of_volume"){
                     update("invoice","Status","sendedwarn", "username",$line['username']);
