@@ -610,7 +610,7 @@ try {
 
 6️⃣ How do I use this VPN?
 
-✅ To learn how to use the application, click the "📚 Guide" button.
+✅ To learn how to use the application, click the '📚 Guide' button.
 
 7️⃣ The VPN is not connecting. What should I do?
 
