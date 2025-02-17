@@ -1,4 +1,6 @@
-# Not Live Yet!
+# Currently in Beta stage
+
+
 
 
 
