@@ -4757,7 +4757,7 @@ elseif(preg_match('/^editstsuts-(.*)-(.*)/', $datain, $dataget)) {
     $stmt = $pdo->prepare("INSERT INTO category (remark) VALUES (?)");
     $stmt->bindParam(1, $text);
     $stmt->execute();
-elseif($text == "❌ Delete Category") {
+}elseif($text == "❌ Delete Category") {
     sendmessage($from_id,"📌 Please select the category you want to delete", KeyboardCategory(), 'HTML');
     step("removecategory",$from_id);
 }elseif($user['step'] == "removecategory"){
