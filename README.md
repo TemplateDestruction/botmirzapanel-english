@@ -1,4 +1,4 @@
-# Currently in Beta stage
+# English version is currently in Beta stage
 
 
 
