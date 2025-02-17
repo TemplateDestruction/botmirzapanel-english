@@ -255,7 +255,7 @@ Panel Name: {$marzban_list_get['name_panel']}";
             }
         }
         $Shoppinginfo = json_encode($Shoppinginfo);
-        $textcreatuser = "✅ Service was successfully created"
+        $textcreatuser = "✅ Service was successfully created
     
 👤 Service Username: <code>{$dataoutput['username']}</code>  
 🌿 Service Name: {$get_invoice['name_product']}  
@@ -336,9 +336,9 @@ Connection Link:
                 $Balance_prim = $user_Balance['Balance'] + $result;
                 update("user","Balance",$Balance_prim, "id",$Balance_id['affiliates']);
                 $result = number_format($result);
-                $textadd = "🎁 Commission Payment"
+                $textadd = "🎁 Commission Payment
         
-        "An amount of $result Toman has been deposited into your wallet by your referral.";
+        An amount of $result Toman has been deposited into your wallet by your referral.";
                 sendmessage($Balance_id['affiliates'], $textadd, null, 'HTML');
             }
         }
@@ -347,7 +347,7 @@ Connection Link:
         update("user","Balance",$Balance_prims, "id",$Balance_id['id']);
         $Balance_id['Balance'] = select("user", "Balance", "id", $get_invoice['id_user'],"select")['Balance'];
         $balanceformatsell = number_format($Balance_id['Balance'], 0);
-        $text_report = " 🛍 New purchase after successful payment"
+        $text_report = " 🛍 New purchase after successful payment
                 
 ⚙️ A user purchased an account with the config name {$get_invoice['username']}.
         
@@ -395,7 +395,7 @@ Tracking Code: $randomString
                 )
             );
         }
-        sendmessage($Payment_report['id_user'], "💎 Dear user, an amount of {$Payment_report['price']} Toman has been deposited into your wallet. Thank you for your payment.")
+        sendmessage($Payment_report['id_user'], "💎 Dear user, an amount of {$Payment_report['price']} Toman has been deposited into your wallet. Thank you for your payment.
                 
 🛒 Your tracking code: {$Payment_report['id_order']}", null, 'HTML');
     }
