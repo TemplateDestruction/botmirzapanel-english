@@ -445,94 +445,94 @@ done
         exit 1
     }
 
-    if [ $? -eq 0 ]; then
-        wait
+#     if [ $? -eq 0 ]; then
+#         wait
 
-        randomdbpass=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-8)
+#         randomdbpass=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-8)
 
-        randomdbdb=$(openssl rand -base64 10 | tr -dc 'a-zA-Z' | cut -c1-8)
+#         randomdbdb=$(openssl rand -base64 10 | tr -dc 'a-zA-Z' | cut -c1-8)
 
-        if [[ $(mysql -u root -p$ROOT_PASSWORD -e "SHOW DATABASES LIKE 'mirzabot'") ]]; then
-            clear
-            echo -e "\n\e[91mYou have already created the database\033[0m\n"
-        else
-            dbname=mirzabot
-            clear
-            echo -e "\n\e[32mPlease enter the database username!\033[0m"
-            printf "[+] Default user name is \e[91m${randomdbdb}\e[0m ( let it blank to use this user name ): "
-            read dbuser
-            if [ "$dbuser" = "" ]; then
-                dbuser=$randomdbdb
-            fi
+#         if [[ $(mysql -u root -p$ROOT_PASSWORD -e "SHOW DATABASES LIKE 'mirzabot'") ]]; then
+#             clear
+#             echo -e "\n\e[91mYou have already created the database\033[0m\n"
+#         else
+#             dbname=mirzabot
+#             clear
+#             echo -e "\n\e[32mPlease enter the database username!\033[0m"
+#             printf "[+] Default user name is \e[91m${randomdbdb}\e[0m ( let it blank to use this user name ): "
+#             read dbuser
+#             if [ "$dbuser" = "" ]; then
+#                 dbuser=$randomdbdb
+#             fi
 
-            echo -e "\n\e[32mPlease enter the database password!\033[0m"
-            printf "[+] Default password is \e[91m${randomdbpass}\e[0m ( let it blank to use this password ): "
-            read dbpass
-            if [ "$dbpass" = "" ]; then
-                dbpass=$randomdbpass
-            fi
+#             echo -e "\n\e[32mPlease enter the database password!\033[0m"
+#             printf "[+] Default password is \e[91m${randomdbpass}\e[0m ( let it blank to use this password ): "
+#             read dbpass
+#             if [ "$dbpass" = "" ]; then
+#                 dbpass=$randomdbpass
+#             fi
 
-            mysql -u root -p$ROOT_PASSWORD -e "CREATE DATABASE $dbname;" -e "CREATE USER '$dbuser'@'%' IDENTIFIED WITH mysql_native_password BY '$dbpass';GRANT ALL PRIVILEGES ON * . * TO '$dbuser'@'%';FLUSH PRIVILEGES;" -e "CREATE USER '$dbuser'@'localhost' IDENTIFIED WITH mysql_native_password BY '$dbpass';GRANT ALL PRIVILEGES ON * . * TO '$dbuser'@'localhost';FLUSH PRIVILEGES;" || {
-                echo -e "\e[91mError: Failed to create database or user.\033[0m"
-                exit 1
-            }
+#             mysql -u root -p$ROOT_PASSWORD -e "CREATE DATABASE $dbname;" -e "CREATE USER '$dbuser'@'%' IDENTIFIED WITH mysql_native_password BY '$dbpass';GRANT ALL PRIVILEGES ON * . * TO '$dbuser'@'%';FLUSH PRIVILEGES;" -e "CREATE USER '$dbuser'@'localhost' IDENTIFIED WITH mysql_native_password BY '$dbpass';GRANT ALL PRIVILEGES ON * . * TO '$dbuser'@'localhost';FLUSH PRIVILEGES;" || {
+#                 echo -e "\e[91mError: Failed to create database or user.\033[0m"
+#                 exit 1
+#             }
 
-            echo -e "\n\e[95mDatabase Created.\033[0m"
+#             echo -e "\n\e[95mDatabase Created.\033[0m"
 
-            clear
+#             clear
 
 
 
-            ASAS="$"
+#             ASAS="$"
 
-            wait
+#             wait
 
-            sleep 1
+#             sleep 1
 
-            file_path="/var/www/html/mirzabotconfig/config.php"
+#             file_path="/var/www/html/mirzabotconfig/config.php"
 
-            if [ -f "$file_path" ]; then
-              rm "$file_path" || {
-                echo -e "\e[91mError: Failed to delete old config.php.\033[0m"
-                exit 1
-              }
-              echo -e "File deleted successfully."
-            else
-              echo -e "File not found."
-            fi
+#             if [ -f "$file_path" ]; then
+#               rm "$file_path" || {
+#                 echo -e "\e[91mError: Failed to delete old config.php.\033[0m"
+#                 exit 1
+#               }
+#               echo -e "File deleted successfully."
+#             else
+#               echo -e "File not found."
+#             fi
 
-            sleep 1
+#             sleep 1
 
-            secrettoken=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-8)
+#             secrettoken=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-8)
 
-            echo -e "<?php" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "${ASAS}APIKEY = '${YOUR_BOT_TOKEN}';" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "${ASAS}usernamedb = '${dbuser}';" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "${ASAS}passworddb = '${dbpass}';" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "${ASAS}dbname = '${dbname}';" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "${ASAS}domainhosts = '${YOUR_DOMAIN}/mirzabotconfig';" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "${ASAS}adminnumber = '${YOUR_CHAT_ID}';" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "${ASAS}usernamebot = '${YOUR_BOTNAME}';" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "${ASAS}secrettoken = '${secrettoken}';" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "${ASAS}connect = mysqli_connect('localhost', \$usernamedb, \$passworddb, \$dbname);" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "if (${ASAS}connect->connect_error) {" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "die(' The connection to the database failed:' . ${ASAS}connect->connect_error);" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "}" >> /var/www/html/mirzabotconfig/config.php
-            echo -e "mysqli_set_charset(${ASAS}connect, 'utf8mb4');" >> /var/www/html/mirzabotconfig/config.php
-            text_to_save=$(cat <<EOF
-\$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-\$dsn = "mysql:host=localhost;dbname=${ASAS}dbname;charset=utf8mb4";
-try {
-     \$pdo = new PDO(\$dsn, \$usernamedb, \$passworddb, \$options);
-} catch (\PDOException \$e) {
-     throw new \PDOException(\$e->getMessage(), (int)\$e->getCode());
-}
-EOF
-)
+#             echo -e "<?php" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "${ASAS}APIKEY = '${YOUR_BOT_TOKEN}';" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "${ASAS}usernamedb = '${dbuser}';" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "${ASAS}passworddb = '${dbpass}';" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "${ASAS}dbname = '${dbname}';" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "${ASAS}domainhosts = '${YOUR_DOMAIN}/mirzabotconfig';" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "${ASAS}adminnumber = '${YOUR_CHAT_ID}';" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "${ASAS}usernamebot = '${YOUR_BOTNAME}';" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "${ASAS}secrettoken = '${secrettoken}';" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "${ASAS}connect = mysqli_connect('localhost', \$usernamedb, \$passworddb, \$dbname);" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "if (${ASAS}connect->connect_error) {" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "die(' The connection to the database failed:' . ${ASAS}connect->connect_error);" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "}" >> /var/www/html/mirzabotconfig/config.php
+#             echo -e "mysqli_set_charset(${ASAS}connect, 'utf8mb4');" >> /var/www/html/mirzabotconfig/config.php
+#             text_to_save=$(cat <<EOF
+# \$options = [
+#     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+#     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+#     PDO::ATTR_EMULATE_PREPARES   => false,
+# ];
+# \$dsn = "mysql:host=localhost;dbname=${ASAS}dbname;charset=utf8mb4";
+# try {
+#      \$pdo = new PDO(\$dsn, \$usernamedb, \$passworddb, \$options);
+# } catch (\PDOException \$e) {
+#      throw new \PDOException(\$e->getMessage(), (int)\$e->getCode());
+# }
+# EOF
+# )
 echo -e "$text_to_save" >> /var/www/html/mirzabotconfig/config.php
             echo -e "?>" >> /var/www/html/mirzabotconfig/config.php
 
