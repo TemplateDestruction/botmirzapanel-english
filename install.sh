@@ -376,26 +376,26 @@ done
         echo -e "\e[91mError: Failed to disable Apache2.\033[0m"
         exit 1
     }
-    sudo apt install letsencrypt -y || {
-        echo -e "\e[91mError: Failed to install letsencrypt.\033[0m"
-        exit 1
-    }
-    sudo systemctl enable certbot.timer || {
-        echo -e "\e[91mError: Failed to enable certbot timer.\033[0m"
-        exit 1
-    }
-    sudo certbot certonly --standalone --agree-tos --preferred-challenges http -d $DOMAIN_NAME || {
-        echo -e "\e[91mError: Failed to generate SSL certificate.\033[0m"
-        exit 1
-    }
-    sudo apt install python3-certbot-apache -y || {
-        echo -e "\e[91mError: Failed to install python3-certbot-apache.\033[0m"
-        exit 1
-    }
-    sudo certbot --apache --agree-tos --preferred-challenges http -d $DOMAIN_NAME || {
-        echo -e "\e[91mError: Failed to configure SSL with Certbot.\033[0m"
-        exit 1
-    }
+    # sudo apt install letsencrypt -y || {
+    #     echo -e "\e[91mError: Failed to install letsencrypt.\033[0m"
+    #     exit 1
+    # }
+    # sudo systemctl enable certbot.timer || {
+    #     echo -e "\e[91mError: Failed to enable certbot timer.\033[0m"
+    #     exit 1
+    # }
+    # sudo certbot certonly --standalone --agree-tos --preferred-challenges http -d $DOMAIN_NAME || {
+    #     echo -e "\e[91mError: Failed to generate SSL certificate.\033[0m"
+    #     exit 1
+    # }
+    # sudo apt install python3-certbot-apache -y || {
+    #     echo -e "\e[91mError: Failed to install python3-certbot-apache.\033[0m"
+    #     exit 1
+    # }
+    # sudo certbot --apache --agree-tos --preferred-challenges http -d $DOMAIN_NAME || {
+    #     echo -e "\e[91mError: Failed to configure SSL with Certbot.\033[0m"
+    #     exit 1
+    # }
 
     echo " "
     echo -e "\033[33mEnable apache2\033[0m"
